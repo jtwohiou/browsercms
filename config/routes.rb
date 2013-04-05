@@ -69,6 +69,7 @@ Cms::Engine.routes.draw do
   match '/content_library', :to=>'html_blocks#index', :as=>'content_library'
   content_blocks :html_blocks
   content_blocks :portlets
+  content_blocks :form_blocks
   post '/portlet/:id/:handler', :to=>"portlet#execute_handler", :as=>"portlet_handler"
 
   content_blocks :file_blocks

@@ -9,7 +9,7 @@ end
 Cms::User.current = create_user(:cmsadmin, :login => "cmsadmin", :first_name => "CMS", :last_name => "Administrator", :email => "cmsadmin@example.com", :password => pwd, :password_confirmation => pwd)
 
 [["Cms::CategoryType", "Categorization"], ["Cms::Category","Categorization"], ["Cms::Tag", "Categorization"],
- ["Cms::HtmlBlock", "Core"], ["Cms::Portlet", "Core"], ["Cms::FileBlock", "Core"], ["Cms::ImageBlock", "Core"]
+ ["Cms::HtmlBlock", "Core"], ["Cms::Portlet", "Core"], ["Cms::FileBlock", "Core"], ["Cms::ImageBlock", "Core"], ["Cms::FormBlock", "Core"]
 ].each do |type|
   create_content_type(type[0].to_sym, :name=>type[0], :group_name=>type[1])
 end
