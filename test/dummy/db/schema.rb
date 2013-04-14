@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813180110) do
+ActiveRecord::Schema.define(:version => 20130405193748) do
 
   create_table "catalog_versions", :force => true do |t|
     t.integer  "original_record_id"
@@ -223,6 +223,33 @@ ActiveRecord::Schema.define(:version => 20120813180110) do
 
   add_index "cms_file_blocks", ["deleted"], :name => "index_cms_file_blocks_on_deleted"
   add_index "cms_file_blocks", ["type"], :name => "index_cms_file_blocks_on_type"
+
+  create_table "cms_form_block_attributes", :force => true do |t|
+    t.integer  "form_block_id"
+    t.string   "name"
+    t.string   "type"
+    t.text     "value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "cms_form_block_posts", :force => true do |t|
+    t.integer  "form_block_id"
+    t.text     "value"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "cms_form_blocks", :force => true do |t|
+    t.string   "type"
+    t.string   "name"
+    t.boolean  "archived",      :default => false
+    t.boolean  "deleted",       :default => false
+    t.integer  "created_by_id"
+    t.integer  "updated_by_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
 
   create_table "cms_group_permissions", :force => true do |t|
     t.integer "group_id"

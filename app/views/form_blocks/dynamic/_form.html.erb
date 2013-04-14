@@ -1,0 +1,27 @@
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        $('#myLink').click(function(){
+
+            var newParagraph = $('<p />').text("Goodbye world...");
+            var newField = '<label for="form_block_field">Field Name</label><input id="form_block_field" name="form_block[field1]" size="30" tabindex="1" type="text" >'
+
+            $('#myDiv').append(newField);
+
+        });
+
+    });
+
+</script>
+
+
+<%= f.cms_text_field :name %>
+
+
+<div id="myDiv">
+
+</div>
+
+<a href="#" id="myLink">Change text</a>
