@@ -54,6 +54,8 @@ module Cms
     def cms_connectable_path(connectable, options={})
       if Portlet === connectable
         cms.portlet_path(connectable)
+      elsif FormBlock === connectable
+        cms.form_block_path(connectable)
       else
         polymorphic_path(build_path_for(connectable), options)
       end
@@ -65,6 +67,8 @@ module Cms
     def edit_cms_connectable_path(connectable, options={})
       if Portlet === connectable
         edit_portlet_path(connectable, options)
+      elsif FormBlock === connectable
+        edit_form_block_path(connectable, options)
       else
         edit_polymorphic_path(build_path_for(connectable), options)
       end
@@ -76,6 +80,8 @@ module Cms
         # Would love a cleaner solution to this problem, see http://stackoverflow.com/questions/702728
         path = if Portlet === block
                  usages_portlet_path(block)
+               elsif FormBlock === block
+                 usages_form_block_path(block)
                else
                  p = []
                  p << engine_for(block)
@@ -84,6 +90,7 @@ module Cms
                  p
                end
         link_to count, path, :id => block.id, :block_type => block.content_block_type
+
       else
         count
       end
